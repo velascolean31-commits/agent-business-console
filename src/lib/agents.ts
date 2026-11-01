@@ -1,0 +1,49 @@
+import type { AgentProfile } from "./types";
+
+export const AGENTS: AgentProfile[] = [
+  {
+    key: "alpha",
+    name: "Alpha",
+    role: "Clipping y vídeo corto",
+    businessModel: "Clips de material con derechos de uso, publicados con revisión humana",
+    platforms: ["YouTube"],
+    tools: ["Transcripción", "Recorte y subtítulos", "Generación de títulos y descripciones"],
+    nextAction: "Conectar YouTube por OAuth (Fase 2)",
+  },
+  {
+    key: "bravo",
+    name: "Bravo",
+    role: "Productos digitales",
+    businessModel: "Venta de productos digitales a un público concreto",
+    platforms: ["Plataforma de venta (por elegir)"],
+    tools: ["Investigación de audiencia", "Borradores de producto", "Páginas de venta"],
+    nextAction: "Elegir plataforma de venta compatible",
+  },
+  {
+    key: "charlie",
+    name: "Charlie",
+    role: "Investigación y SEO",
+    businessModel: "Contenido original posicionado por SEO",
+    platforms: ["Search Console"],
+    tools: ["Investigación de nichos", "Calendario editorial"],
+    nextAction: "Conectar medición en modo solo lectura",
+  },
+  {
+    key: "delta",
+    name: "Delta",
+    role: "Microherramientas",
+    businessModel: "Pequeñas herramientas digitales",
+    platforms: ["Hosting y dominios"],
+    tools: ["Prototipado", "Pruebas", "Preparación de despliegue"],
+    nextAction: "Definir límite de gasto antes de cualquier compra",
+  },
+  {
+    key: "sargento",
+    name: "Sargento",
+    role: "Director",
+    businessModel: "Coordinación y control de presupuestos",
+    platforms: [],
+    tools: ["Asignación de tareas", "Revisión de resultados"],
+    nextAction: "Esperar a que haya datos reales para recomendar",
+  },
+];
