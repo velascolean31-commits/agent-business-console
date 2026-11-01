@@ -70,6 +70,20 @@ export const INTEGRATIONS: IntegrationDefinition[] = [
     notes: "Solo medición; no publica contenido.",
   },
   {
+    id: "higgsfield",
+    name: "Higgsfield (vídeo con IA)",
+    agents: ["echo"],
+    authMethod: "api_key",
+    implemented: false,
+    requiredEnv: ["HIGGSFIELD_API_KEY_ID", "HIGGSFIELD_API_KEY_SECRET"],
+    capabilities: { publish: false, readAnalytics: false, readRevenue: false, configurePayout: false },
+    humanSteps: [
+      "Crear la cuenta de API en console.higgsfield.ai y recargar saldo",
+      "Aprobar cada generación que supere el presupuesto configurado",
+    ],
+    notes: "Se paga por segundo generado. Cada vídeo debe ser una escena distinta (política de YouTube sobre contenido repetitivo) y marcarse como generado con IA.",
+  },
+  {
     id: "hosting",
     name: "Hosting y dominios",
     agents: ["delta"],

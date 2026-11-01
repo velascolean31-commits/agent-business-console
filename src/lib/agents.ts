@@ -38,6 +38,15 @@ export const AGENTS: AgentProfile[] = [
     nextAction: "Definir límite de gasto antes de cualquier compra",
   },
   {
+    key: "echo",
+    name: "Echo",
+    role: "Vídeos relajantes con IA",
+    businessModel: "Vídeos largos de ambiente (lluvia, hoguera, olas) en un canal propio",
+    platforms: ["YouTube (canal nuevo)", "Higgsfield"],
+    tools: ["Generación de escena con IA", "Bucle sin cortes", "Sonido con licencia libre"],
+    nextAction: "Crear el canal nuevo y conectar Higgsfield con presupuesto máximo",
+  },
+  {
     key: "sargento",
     name: "Sargento",
     role: "Director",

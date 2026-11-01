@@ -75,3 +75,14 @@ Fase 3: flujo de producción y publicación del Agente Alpha con revisión human
 4. **Asistente de avisos** conectado a `approval_requests`: notificaciones de la app, después bot de
    Telegram (aprobar o rechazar con botones) y, más adelante, WhatsApp Business (requiere verificación
    de Meta y plantillas) y llamadas de voz (servicio de pago).
+
+## Decisiones de la Fase 3 (1/11/2026)
+
+- **Alpha → clipping** de campañas de Whop Content Rewards, con el material oficial que da el creador.
+  La campaña se elige junto al usuario. La inscripción y el envío a Whop serán manuales al principio.
+- **Echo (agente nuevo) → vídeos relajantes con IA** (lluvia en la montaña, hoguera, olas) en un
+  **canal de YouTube nuevo**, separado de @landroidote3960. Clip corto generado con Higgsfield y repetido
+  sin cortes, con sonido de licencia libre. Siempre con presupuesto máximo, revisión humana y etiqueta de
+  contenido generado con IA. Cada vídeo debe ser una escena distinta para no caer en «contenido repetitivo».
+- **Titular de los cobros**: el usuario (mayor de edad).
+- Migración `0003_agent_echo.sql`: añade `echo` a los agentes.
