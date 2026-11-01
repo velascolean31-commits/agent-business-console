@@ -16,6 +16,10 @@ token guardado cifrado en Vault, permisos de Alpha y registro en auditoría.
 
 ## Arrancar
 
+**Windows, forma rápida:** doble clic en `arrancar.bat`. Descarga lo último, instala dependencias, arranca la app y abre el navegador.
+
+**A mano:**
+
 1. Crea un proyecto en Supabase y aplica `supabase/migrations/0001_business_module.sql`.
 2. Copia `.env.example` a `.env.local` y rellena las variables.
 3. `npm install && npm run dev`
