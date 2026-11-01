@@ -1,7 +1,8 @@
 # Consola de negocios de agentes — Fases 1 y 2
 
 Fase 1: interfaz, base de datos y estados. Fase 2: login por enlace de correo y conexión OAuth con YouTube
-(solo lectura). **El flujo OAuth está implementado pero NO probado contra Google ni Supabase reales.**
+(solo lectura). **Fase 2 probada con cuentas reales el 1/11/2026**: login por correo, conexión del canal de YouTube,
+token guardado cifrado en Vault, permisos de Alpha y registro en auditoría.
 
 ## Configuración (lo que tienes que aportar tú)
 
@@ -34,7 +35,8 @@ Fase 1: interfaz, base de datos y estados. Fase 2: login por enlace de correo y 
 | Elemento | Estado |
 |---|---|
 | OAuth con otras plataformas | No implementado |
-| Conectar / Sincronizar / Revocar YouTube | Implementado, sin probar con cuentas reales |
+| Conectar YouTube | Probado con cuenta real |
+| Sincronizar / Revocar YouTube | Implementado, pendiente de probar |
 | Detener agente | Desactivado |
 | Publicación, lectura de métricas e ingresos | No disponible (Fase 3 y 4; la Fase 2 solo pide permisos de lectura) |
 | Aprobaciones de gasto desde la interfaz | Solo esquema |
@@ -48,4 +50,15 @@ OAuth, la interfaz muestra «No conectado» y explica qué falta.
 
 ## Siguiente paso
 
-Probar el flujo completo con tus cuentas y, si funciona, Fase 3: flujo de producción y publicación del Agente Alpha con revisión humana.
+Fase 3: flujo de producción y publicación del Agente Alpha con revisión humana.
+
+## Qué permite realmente la integración de YouTube (Fase 2)
+
+| Acción | Estado |
+|---|---|
+| Leer datos del canal | Disponible (permiso `youtube.readonly`) |
+| Leer estadísticas | Permiso concedido (`yt-analytics.readonly`); lectura de métricas en Fase 4 |
+| Publicar vídeos | No disponible: requiere permiso de subida (Fase 3) |
+| Leer ingresos | No disponible: requiere monetización activa y permiso adicional |
+| Configurar cobro | No disponible por API: se hace en AdSense, manualmente |
+| Requiere intervención humana | Login, pulsar «Permitir» en Google, monetización y cobro |
