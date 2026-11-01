@@ -62,3 +62,16 @@ Fase 3: flujo de producción y publicación del Agente Alpha con revisión human
 | Leer ingresos | No disponible: requiere monetización activa y permiso adicional |
 | Configurar cobro | No disponible por API: se hace en AdSense, manualmente |
 | Requiere intervención humana | Login, pulsar «Permitir» en Google, monetización y cobro |
+
+## Hoja de ruta (después de las fases 3 y 4)
+
+1. **Subir la app a internet** con dominio https (necesario para usarla fuera de tu ordenador y para sacar
+   la app de Google del modo de prueba).
+2. **App instalable (PWA)** en móvil y ordenador, con icono propio y notificaciones.
+3. **Aspecto de escuadrón**: cada agente con su tarjeta de personaje, rango, color y estado de misión.
+   Sargento como comandante. Cada agente tendrá un hueco de imagen personalizable
+   (`public/avatars/<agente>.png`) donde el usuario pone la imagen que quiera; si no hay imagen, se
+   muestra un emblema por defecto.
+4. **Asistente de avisos** conectado a `approval_requests`: notificaciones de la app, después bot de
+   Telegram (aprobar o rechazar con botones) y, más adelante, WhatsApp Business (requiere verificación
+   de Meta y plantillas) y llamadas de voz (servicio de pago).
