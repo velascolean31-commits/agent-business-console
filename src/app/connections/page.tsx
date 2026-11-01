@@ -7,16 +7,25 @@ export const dynamic = "force-dynamic";
 export default async function Connections({
   searchParams,
 }: {
-  searchParams: Promise<{ ok?: string; error?: string }>;
+  searchParams: Promise<{ ok?: string; error?: string; detail?: string }>;
 }) {
-  const { ok, error } = await searchParams;
+  const { ok, error, detail } = await searchParams;
   const { connections } = await loadConnections();
 
   return (
     <>
       <h1>Connections &amp; Accounts</h1>
-      {ok && <div className="notice real">Hecho: {ok === "youtube" ? "YouTube conectado" : ok === "revoked" ? "acceso revocado" : "sincronizado"}.</div>}
-      {error && <div className="notice bad">Error: {error}</div>}
+      {ok && (
+        <div className="banner ok" role="status">
+          ✓ {ok === "youtube" ? "YouTube conectado" : ok === "revoked" ? "Acceso revocado" : "Sincronizado"}
+          {detail ? `: ${detail}` : ""}.
+        </div>
+      )}
+      {error && (
+        <div className="banner err" role="alert">
+          ✕ Error: {error}
+        </div>
+      )}
       <p className="sub">
         Las conexiones se hacen solo mediante OAuth u otros mecanismos oficiales. Si una plataforma exige
         verificación de identidad, aceptación de condiciones o confirmación por correo, lo harás tú.
