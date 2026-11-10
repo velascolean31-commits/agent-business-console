@@ -113,3 +113,9 @@ export function whatsappLink(phone: string | null, text: string): string | null 
   if (digits.length < 10) return null;
   return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
 }
+
+// Días de prueba gratuita antes del primer cobro (0 = sin prueba)
+export function trialDays(): number {
+  const n = Number(process.env.TRIAL_DAYS ?? "30");
+  return Number.isInteger(n) && n >= 0 && n <= 90 ? n : 0;
+}

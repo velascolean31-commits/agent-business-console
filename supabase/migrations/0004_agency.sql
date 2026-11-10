@@ -3,6 +3,7 @@ alter type agent_key add value if not exists 'scout';
 alter type agent_key add value if not exists 'forge';
 alter type agent_key add value if not exists 'herald';
 alter type agent_key add value if not exists 'ledger';
+alter type agent_key add value if not exists 'atlas';
 
 create table leads (
   id uuid primary key default gen_random_uuid(),
@@ -24,6 +25,8 @@ create table leads (
   became_client_at timestamptz,
   stripe_customer_id text,
   stripe_subscription_id text unique,
+  source text not null default 'manual' check (source in ('manual','self_serve')),
+  accepted_terms_at timestamptz,
   created_at timestamptz not null default now(),
   unique (owner_id, business_name, city)
 );
@@ -48,7 +51,7 @@ create policy booking_requests_select_own on booking_requests for select to auth
 -- El cliente no necesita ver los identificadores de Stripe
 revoke select on leads from anon, authenticated;
 grant select (id, owner_id, business_name, category, city, phone, email, address, opening_hours,
-  current_website, notes, slug, status, contacted_at, became_client_at, created_at)
+  current_website, notes, slug, status, source, contacted_at, became_client_at, created_at)
   on leads to authenticated;
 
 -- Escrituras: solo servidor (service_role), tras validar la sesión o la firma de Stripe.

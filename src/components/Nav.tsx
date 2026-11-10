@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 // La barra de la consola no se muestra en las webs públicas de los negocios (/s/...)
 export function Nav() {
   const path = usePathname();
-  if (path.startsWith("/s/")) return null;
+  if (["/s/", "/webs", "/legal"].some((x) => path.startsWith(x))) return null;
   return (
     <nav>
       <strong>Consola de agentes</strong>

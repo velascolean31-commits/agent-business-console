@@ -25,7 +25,7 @@ export async function middleware(req: NextRequest) {
 
   const p = req.nextUrl.pathname;
   // Públicas: acceso, webs de los negocios, su pago y reservas, y el aviso firmado de Stripe
-  const open = ["/login", "/auth", "/s/", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
+  const open = ["/login", "/auth", "/s/", "/webs", "/legal", "/api/signup", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
     p.startsWith(x)
   );
   const allowed = process.env.ALLOWED_EMAIL;

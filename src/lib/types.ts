@@ -9,7 +9,7 @@ export type DataOrigin = "real" | "estimated" | "demo";
 
 export type AgentKey =
   | "alpha" | "bravo" | "charlie" | "delta" | "echo" | "sargento"
-  | "scout" | "forge" | "herald" | "ledger";
+  | "scout" | "forge" | "herald" | "ledger" | "atlas";
 
 export const STATUS_LABEL: Record<ConnectionStatus, string> = {
   connected: "Conectada",

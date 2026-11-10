@@ -27,7 +27,8 @@ export async function POST(req: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const s = event.data.object as Stripe.Checkout.Session;
     const leadId = s.client_reference_id;
-    if (leadId && s.payment_status === "paid") {
+    // Con periodo de prueba no hay cobro inicial: Stripe indica «no_payment_required»
+    if (leadId && (s.payment_status === "paid" || s.payment_status === "no_payment_required")) {
       const { data: lead } = await admin
         .from("leads")
         .update({

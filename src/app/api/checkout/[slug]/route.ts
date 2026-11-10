@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getAdmin } from "@/lib/supabase-admin";
 import { getStripe, missingStripeEnv } from "@/lib/stripe";
+import { trialDays } from "@/lib/leads";
 
 // Público: el dueño del negocio pulsa «Activar» en su web de muestra y paga en la página de Stripe.
 // Aquí no se maneja ningún dato de pago: solo se crea la sesión y se redirige.
@@ -25,7 +26,10 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ slu
       line_items: [{ price: process.env.STRIPE_PRICE_ID!, quantity: 1 }],
       client_reference_id: lead.id,
       customer_email: lead.email ?? undefined,
-      subscription_data: { metadata: { lead_id: lead.id } },
+      subscription_data: {
+        metadata: { lead_id: lead.id },
+        ...(trialDays() > 0 ? { trial_period_days: trialDays() } : {}),
+      },
       success_url: `${base}/s/${slug}?pago=ok`,
       cancel_url: `${base}/s/${slug}?pago=cancelado`,
       locale: "es",
