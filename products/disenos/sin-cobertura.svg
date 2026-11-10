@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4500 5400" role="img" aria-label="SIN COBERTURA, PERO CON CALMA">
+  <rect width="4500" height="5400" fill="#3D1F47"/>
+  <rect x="300" y="300" width="3900" height="4800" fill="none" stroke="#F4D6FF" stroke-width="24" rx="120"/>
+  <circle cx="2250" cy="1500" r="330" fill="none" stroke="#F4D6FF" stroke-width="40"/>
+  <circle cx="2250" cy="1500" r="120" fill="#F4D6FF"/>
+  <text x="2250" y="2900" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="403" fill="#F4D6FF">SIN COBERTURA,</text>
+  <text x="2250" y="3500" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="300" letter-spacing="14" fill="#F4D6FF">PERO CON CALMA</text>
+  <line x1="1500" y1="3900" x2="3000" y2="3900" stroke="#F4D6FF" stroke-width="24" stroke-linecap="round"/>
+</svg>

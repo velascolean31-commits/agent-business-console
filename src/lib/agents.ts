@@ -28,7 +28,7 @@ export const AGENTS: AgentProfile[] = [
     businessModel: "Plantillas descargables (hojas de cálculo, planificadores) con entrega automática",
     platforms: ["Tienda de productos digitales (por conectar)"],
     tools: ["Creación de plantillas", "Fichas de producto", "Entrega automática de la plataforma"],
-    nextAction: "Crear la cuenta de la tienda; producir el primer lote de plantillas",
+    nextAction: "3 plantillas hechas en products/plantillas. Falta la cuenta de la tienda para publicarlas",
   },
   {
     key: "delta",
@@ -37,7 +37,7 @@ export const AGENTS: AgentProfile[] = [
     businessModel: "Herramientas web gratuitas con anuncios y versión de pago",
     platforms: ["Web propia (por desplegar)"],
     tools: ["Prototipado", "Pruebas", "Despliegue"],
-    nextAction: "Pendiente: elegir las 3 primeras herramientas con datos de búsqueda",
+    nextAction: "3 herramientas hechas en /herramientas. Falta desplegar y solicitar anuncios",
   },
   {
     key: "atlas",
@@ -46,7 +46,7 @@ export const AGENTS: AgentProfile[] = [
     businessModel: "Diseños originales en productos que la plataforma fabrica y envía",
     platforms: ["Plataforma de impresión bajo demanda (por conectar)"],
     tools: ["Diseño original", "Fichas de producto"],
-    nextAction: "Pendiente: crear la cuenta de la plataforma",
+    nextAction: "4 diseños hechos en products/disenos. Falta la cuenta de la plataforma",
   },
   {
     key: "charlie",
@@ -55,7 +55,7 @@ export const AGENTS: AgentProfile[] = [
     businessModel: "Guías útiles que atraen visitas a los otros cuatro negocios y a enlaces de afiliado",
     platforms: ["Web propia (por desplegar)"],
     tools: ["Investigación", "Redacción original", "Calendario editorial"],
-    nextAction: "Pendiente: empieza cuando haya al menos un producto en venta",
+    nextAction: "3 guías hechas en /guias. Falta desplegar; sin enlaces de afiliado todavía",
   },
   {
     key: "sargento",

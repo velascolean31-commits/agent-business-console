@@ -2,8 +2,11 @@
 export const SITE_CSS = `
 main:has(.site){max-width:none;padding:0}
 .site{--ink:#1b1f27;--soft:#5a6272;--line:#e4e7ec;--brand:#b4532a;--paper:#fffdf9;background:var(--paper);color:var(--ink);min-height:100vh;font:16px/1.6 Georgia,'Times New Roman',serif}
-.site section,.site .hero,.site .flash.warn{background:#fdf1e7;color:#8a3b12}
-.site footer{max-width:760px;margin:0 auto;padding:28px 20px}
+.site .out{border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 16px;display:grid;gap:6px}
+.site .result{display:flex;justify-content:space-between;gap:12px;margin:0;font:16px system-ui,sans-serif}
+.site .result span{color:var(--soft)}
+.site .link{font:14px ui-monospace,Menlo,monospace;word-break:break-all;margin:0 0 8px}
+.site section,.site .hero,.site footer{max-width:760px;margin:0 auto;padding:28px 20px}
 .site h1{font-size:clamp(32px,7vw,54px);line-height:1.1;margin:6px 0 10px}
 .site h2{font-size:20px;margin:0 0 10px;color:var(--ink)}
 .site h2 small{font-weight:400;color:var(--soft);font-size:14px}

@@ -6,10 +6,10 @@ adelantado. **Ninguno garantiza ingresos**; lo automatizable es la producción y
 | # | Modelo | Agentes | Cómo cobra | Qué queda automatizado | Estado real (10/11/2026) |
 |---|---|---|---|---|---|
 | 1 | **Webs autoservicio** para negocios locales | Forge, Ledger | Suscripción mensual (Stripe) con prueba gratuita | Alta, creación de la web, cobro, activación, pausa al cancelar | Código hecho y compilando. Falta: migración, Stripe, datos legales, despliegue |
-| 2 | **Productos digitales** (plantillas) | Bravo | Venta única en una tienda de productos digitales | Entrega y cobro (los hace la plataforma) | Sin empezar. Falta: cuenta de la tienda |
-| 3 | **Microherramientas web** | Delta | Anuncios y versión de pago | Todo salvo elegir qué construir | Sin empezar. Falta: despliegue |
-| 4 | **Diseños bajo demanda** | Atlas | Margen por venta; fabrica y envía la plataforma | Producción, envío y cobro | Sin empezar. Falta: cuenta de la plataforma |
-| 5 | **Guías y afiliación** | Charlie | Comisiones y tráfico hacia 1–4 | Redacción y publicación programada | Sin empezar. Depende de tener 1–4 en marcha |
+| 2 | **Productos digitales** (plantillas) | Bravo | Venta única en una tienda de productos digitales | Entrega y cobro (los hace la plataforma) | 3 plantillas Excel hechas y verificadas (`products/`). Falta: cuenta de la tienda |
+| 3 | **Microherramientas web** | Delta | Anuncios y versión de pago | Todo salvo elegir qué construir | 3 herramientas hechas (`/herramientas`). Falta: despliegue y red de anuncios |
+| 4 | **Diseños bajo demanda** | Atlas | Margen por venta; fabrica y envía la plataforma | Producción, envío y cobro | 4 diseños hechos (`products/disenos`). Falta: cuenta de la plataforma |
+| 5 | **Guías y afiliación** | Charlie | Comisiones y tráfico hacia 1–4 | Redacción y publicación programada | 3 guías hechas (`/guias`). Falta: despliegue; sin afiliación todavía |
 
 Dropshipping queda fuera mientras no haya un presupuesto de anuncios que se pueda perder.
 

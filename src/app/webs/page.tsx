@@ -94,6 +94,7 @@ export default async function Webs({ searchParams }: { searchParams: Promise<{ e
       </section>
 
       <footer>
+        <Link href="/herramientas">Herramientas gratuitas</Link> · <Link href="/guias">Guías</Link> ·{" "}
         <Link href="/legal">Aviso legal y privacidad</Link>
       </footer>
     </div>
