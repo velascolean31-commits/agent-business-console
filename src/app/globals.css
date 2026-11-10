@@ -50,3 +50,9 @@ ul { margin: 6px 0 0; padding-left: 18px; }
 .banner { margin: 12px 0 16px; padding: 12px 16px; border-radius: 10px; font-weight: 600; border: 1px solid currentColor; background: var(--card); }
 .banner.ok { color: var(--real); }
 .banner.err { color: var(--bad); }
+.leadform { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.leadform input, .leadform select, .msg { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); width: 100%; }
+.msg { margin: 6px 0; font-size: 14px; resize: vertical; }
+button.go { cursor: pointer; color: var(--text); }
+button.go.small { font-size: 13px; padding: 4px 10px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }

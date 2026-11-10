@@ -1,4 +1,10 @@
-# Consola de negocios de agentes — Fases 1 y 2
+# Consola de negocios de agentes
+
+> **Negocio activo (10/11/2026): agencia de webs con reservas para negocios locales.** Ver `docs/agencia-plan.md`.
+> Código hecho y compilando; **sin probar de extremo a extremo** (falta aplicar `0004_agency.sql`, Stripe y desplegar).
+> Alpha (clipping) y Echo (vídeos relajantes) quedan en pausa.
+
+## Histórico — Fases 1 y 2
 
 Fase 1: interfaz, base de datos y estados. Fase 2: login por enlace de correo y conexión OAuth con YouTube
 (solo lectura). **Fase 2 probada con cuentas reales el 1/11/2026**: login por correo, conexión del canal de YouTube,

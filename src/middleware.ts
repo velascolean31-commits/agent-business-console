@@ -24,7 +24,10 @@ export async function middleware(req: NextRequest) {
   } = await sb.auth.getUser();
 
   const p = req.nextUrl.pathname;
-  const open = p.startsWith("/login") || p.startsWith("/auth");
+  // Públicas: acceso, webs de los negocios, su pago y reservas, y el aviso firmado de Stripe
+  const open = ["/login", "/auth", "/s/", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
+    p.startsWith(x)
+  );
   const allowed = process.env.ALLOWED_EMAIL;
   const forbidden = user && allowed && user.email?.toLowerCase() !== allowed.toLowerCase();
 
