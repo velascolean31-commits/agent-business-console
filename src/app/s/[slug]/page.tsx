@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { getAdmin } from "@/lib/supabase-admin";
 import { CATEGORIES, planPrice, trialDays, type LeadCategory } from "@/lib/leads";
 import { SITE_CSS } from "@/lib/site-css";
+import { BookingForm } from "@/components/BookingForm";
+import { JsonLd } from "@/components/WebsParts";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +56,8 @@ export default async function Site({
   const trial = trialDays();
   const digits = (lead.phone ?? "").replace(/\D/g, "");
   const wa = digits.length === 9 ? `34${digits}` : digits;
+  // Los móviles españoles empiezan por 6 o 7: solo a esos se les puede escribir por WhatsApp
+  const mobile = /^34[67]\d{8}$/.test(wa);
   const maps = lead.address
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${lead.address}, ${lead.city}`)}`
     : null;
@@ -91,7 +95,7 @@ export default async function Site({
         <div className="actions">
           <a href="#reserva" className="btn">{cat.cta}</a>
           {digits && <a href={`tel:${digits}`} className="btn ghost">Llamar</a>}
-          {wa.length >= 10 && (
+          {mobile && (
             <a href={`https://wa.me/${wa}`} className="btn ghost" target="_blank" rel="noreferrer">WhatsApp</a>
           )}
         </div>
@@ -116,18 +120,34 @@ export default async function Site({
 
       <section id="reserva">
         <h2>{cat.cta}</h2>
-        <form method="post" action={`/api/booking/${lead.slug}`} className="form">
-          <input name="nombre" placeholder="Tu nombre" required minLength={2} maxLength={80} />
-          <input name="contacto" placeholder="Teléfono o correo" required minLength={5} maxLength={120} />
-          <input name="cuando" placeholder="Día y hora que prefieres" maxLength={80} />
-          <textarea name="mensaje" placeholder="Mensaje (opcional)" rows={3} maxLength={600} />
-          <input name="web" tabIndex={-1} autoComplete="off" className="hp" aria-hidden="true" />
-          <button className="btn">Enviar solicitud</button>
-          <p className="legal">
-            Tus datos se usan solo para gestionar esta solicitud con {lead.business_name}.
+        {mobile ? (
+          <BookingForm waNumber={wa} businessName={lead.business_name} cta={cat.cta} />
+        ) : digits ? (
+          <p>
+            Llámanos y te atendemos: <a href={`tel:${digits}`}>{lead.phone}</a>
           </p>
-        </form>
+        ) : (
+          <p>Pásate por el local en nuestro horario y te atendemos.</p>
+        )}
       </section>
+
+      {isClient && process.env.APP_URL && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: lead.business_name,
+            url: `${process.env.APP_URL}/s/${lead.slug}`,
+            ...(digits ? { telephone: `+${wa}` } : {}),
+            address: {
+              "@type": "PostalAddress",
+              ...(lead.address ? { streetAddress: lead.address } : {}),
+              addressLocality: lead.city,
+              addressCountry: "ES",
+            },
+          }}
+        />
+      )}
 
       <footer>{lead.business_name} · {lead.city}</footer>
     </div>

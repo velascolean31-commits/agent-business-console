@@ -144,3 +144,107 @@ export const GUIDES: Guide[] = [
     ],
   },
 ];
+
+// Páginas por sector (modelo 1). Cada una tiene contenido propio: no son la misma página con el nombre cambiado.
+export interface Sector {
+  slug: string;
+  category: "peluqueria" | "restaurante" | "clinica" | "taller" | "tienda";
+  name: string;
+  title: string;
+  intro: string;
+  problems: string[];
+  includes: string[];
+}
+
+export const SECTORS: Sector[] = [
+  {
+    slug: "peluquerias",
+    category: "peluqueria",
+    name: "Peluquerías y centros de estética",
+    title: "Web para peluquerías con petición de cita",
+    intro: "Que te pidan cita por WhatsApp desde tu web, sin interrumpirte mientras atiendes.",
+    problems: [
+      "El teléfono suena cuando tienes las manos ocupadas y la llamada se pierde.",
+      "Quien te busca en Google solo encuentra una ficha con el horario sin actualizar.",
+      "Las citas por mensajes de Instagram se mezclan con todo lo demás.",
+    ],
+    includes: [
+      "Botón «Pedir cita» que te escribe por WhatsApp con el día y la hora que quiere el cliente",
+      "Lista de servicios: corte, color, peinado, tratamientos",
+      "Horario y mapa para llegar",
+      "Botón de llamada para quien prefiere hablar",
+    ],
+  },
+  {
+    slug: "restaurantes",
+    category: "restaurante",
+    name: "Bares y restaurantes",
+    title: "Web para bares y restaurantes con reservas",
+    intro: "Una página con tu horario, cómo llegar y un botón para reservar mesa por WhatsApp.",
+    problems: [
+      "En el servicio de comidas nadie puede coger el teléfono para apuntar reservas.",
+      "La gente quiere saber si abres hoy y a qué hora cierra la cocina.",
+      "Los grupos preguntan lo mismo cada vez: menú, sitio y cómo reservar.",
+    ],
+    includes: [
+      "Botón «Reservar mesa» que te llega por WhatsApp con el día, la hora y cuántos son",
+      "Horario visible en la primera pantalla",
+      "Mapa y dirección",
+      "Apartados para menú del día, carta, grupos y para llevar",
+    ],
+  },
+  {
+    slug: "clinicas",
+    category: "clinica",
+    name: "Clínicas y consultas",
+    title: "Web para clínicas y consultas con solicitud de cita",
+    intro: "Una página clara para que los pacientes sepan dónde estás, cuándo atiendes y cómo pedir cita.",
+    problems: [
+      "Recepción dedica buena parte de la mañana a dar el horario y la dirección por teléfono.",
+      "Los pacientes nuevos no saben cómo pedir la primera cita.",
+      "Fuera del horario de consulta no hay forma de dejar una solicitud.",
+    ],
+    includes: [
+      "Botón «Solicitar cita» por WhatsApp, también fuera de horario",
+      "Horario de consulta y teléfono",
+      "Dirección con mapa",
+      "El formulario solo pide nombre y preferencia de día: no recoge datos de salud",
+    ],
+  },
+  {
+    slug: "talleres",
+    category: "taller",
+    name: "Talleres",
+    title: "Web para talleres con petición de cita",
+    intro: "Que te pidan cita para el coche sin tener que parar a coger el teléfono.",
+    problems: [
+      "Debajo de un coche no se puede contestar llamadas.",
+      "El cliente quiere saber si puedes darle hora esta semana y cómo llegar.",
+      "Muchos te buscan por el móvil cuando ya tienen la avería.",
+    ],
+    includes: [
+      "Botón «Pedir cita» por WhatsApp con el día que le viene bien al cliente",
+      "Servicios habituales: revisión, neumáticos, frenos, pre-ITV",
+      "Horario y mapa",
+      "Botón de llamada directa desde el móvil",
+    ],
+  },
+  {
+    slug: "tiendas",
+    category: "tienda",
+    name: "Tiendas de barrio",
+    title: "Web para tiendas de barrio",
+    intro: "Una página con tu horario, dónde estás y un botón para que te pregunten por WhatsApp.",
+    problems: [
+      "Quien busca tu tienda quiere saber si estás abierto antes de acercarse.",
+      "Los encargos se piden por teléfono y a veces se pierden.",
+      "No necesitas una tienda en línea, pero sí aparecer cuando te buscan.",
+    ],
+    includes: [
+      "Botón para consultas y encargos por WhatsApp",
+      "Horario, también el de sábados",
+      "Mapa y dirección",
+      "Apartados para novedades, encargos y recogida en tienda",
+    ],
+  },
+];

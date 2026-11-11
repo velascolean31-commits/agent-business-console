@@ -2,15 +2,19 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getAdmin, audit } from "@/lib/supabase-admin";
 import { ownerId, legalIdentity } from "@/lib/owner";
 import { CATEGORIES, slugify } from "@/lib/leads";
+import { SECTORS } from "@/lib/public-content";
 
 const DAILY_CAP = 40; // tope global de altas públicas al día, contra abuso
 
 // Público: un negocio crea su propia web de muestra desde /webs.
 export async function POST(req: NextRequest) {
   const base = process.env.APP_URL ?? "";
-  const back = (q: string) => NextResponse.redirect(`${base}/webs?${q}#crear`, 303);
-
   const form = await req.formData();
+  // Vuelve a la página por sector desde la que se envió, si es una de las nuestras
+  const origin = SECTORS.find((x) => x.slug === String(form.get("origen") ?? ""));
+  const back = (q: string) =>
+    NextResponse.redirect(`${base}/webs${origin ? `/${origin.slug}` : ""}?${q}#crear`, 303);
+
   if (String(form.get("web") ?? "")) return NextResponse.redirect(`${base}/webs`, 303); // bots
 
   const text = (k: string, max: number) => String(form.get(k) ?? "").trim().slice(0, max);

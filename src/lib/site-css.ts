@@ -2,6 +2,15 @@
 export const SITE_CSS = `
 main:has(.site){max-width:none;padding:0}
 .site{--ink:#1b1f27;--soft:#5a6272;--line:#e4e7ec;--brand:#b4532a;--paper:#fffdf9;background:var(--paper);color:var(--ink);min-height:100vh;font:16px/1.6 Georgia,'Times New Roman',serif}
+.site details{border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 12px;font:15px system-ui,sans-serif}
+.site details summary{cursor:pointer;color:var(--soft)}
+.site details .form{margin-top:10px}
+.site .faq h3{font-size:17px;margin:18px 0 4px}
+.site .faq p{margin:0}
+.site ul.plain{margin:0;padding-left:20px}
+.site ul.plain li{margin-bottom:6px}
+.site .micro{font:14px system-ui,sans-serif;color:var(--soft);margin:8px 0 0}
+.site .sectors{display:flex;gap:8px;flex-wrap:wrap}
 .site .out{border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 16px;display:grid;gap:6px}
 .site .result{display:flex;justify-content:space-between;gap:12px;margin:0;font:16px system-ui,sans-serif}
 .site .result span{color:var(--soft)}

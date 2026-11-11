@@ -25,7 +25,7 @@ export async function middleware(req: NextRequest) {
 
   const p = req.nextUrl.pathname;
   // Públicas: acceso, webs de los negocios, su pago y reservas, y el aviso firmado de Stripe
-  const open = ["/login", "/auth", "/s/", "/webs", "/legal", "/herramientas", "/guias", "/api/signup", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
+  const open = ["/login", "/auth", "/s/", "/webs", "/legal", "/sitemap.xml", "/robots.txt", "/herramientas", "/guias", "/api/signup", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
     p.startsWith(x)
   );
   const allowed = process.env.ALLOWED_EMAIL;
@@ -33,7 +33,8 @@ export async function middleware(req: NextRequest) {
 
   if ((!user || forbidden) && !open) {
     const to = req.nextUrl.clone();
-    to.pathname = "/login";
+    // La portada pública es la página de alta; el resto de rutas privadas llevan al acceso
+    to.pathname = p === "/" ? "/webs" : "/login";
     to.search = "";
     return NextResponse.redirect(to);
   }

@@ -45,7 +45,8 @@ export default function Legal() {
             <h2>Datos personales</h2>
             <p>
               Responsable: {id.name}. Se tratan los datos de contacto del negocio para crear y gestionar su web y la
-              suscripción, y las solicitudes de cita que reciben los negocios clientes, para hacérselas llegar. No se
+              suscripción. Las solicitudes de cita se envían por WhatsApp directamente al negocio y no se guardan en
+              nuestros servidores. No se
               usan para otros fines ni se venden. Proveedores: Supabase (base de datos), Stripe (pagos) y el alojamiento
               web. Puedes pedir acceso, rectificación o borrado en {id.email}, y reclamar ante la Agencia Española de
               Protección de Datos.
