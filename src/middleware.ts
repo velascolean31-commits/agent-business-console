@@ -3,10 +3,27 @@ import { NextResponse, type NextRequest } from "next/server";
 
 type Cookie = { name: string; value: string; options?: Record<string, unknown> };
 
+// Públicas: acceso, páginas de captación, webs de los negocios, su pago y el aviso firmado de Stripe
+const OPEN = [
+  "/login", "/auth", "/s/", "/webs", "/legal", "/sitemap.xml", "/robots.txt", "/herramientas", "/guias",
+  "/api/signup", "/api/checkout/", "/api/booking/", "/api/stripe/webhook",
+];
+
 export async function middleware(req: NextRequest) {
+  const p = req.nextUrl.pathname;
+  const open = OPEN.some((x) => p.startsWith(x));
+  const away = (path: string) => {
+    const to = req.nextUrl.clone();
+    to.pathname = path;
+    to.search = "";
+    return NextResponse.redirect(to);
+  };
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !anon) return NextResponse.next();
+  const allowed = process.env.ALLOWED_EMAIL;
+  // Sin configuración de acceso, el panel privado queda cerrado (nunca abierto por defecto)
+  if (!url || !anon || !allowed) return open ? NextResponse.next() : away("/webs");
 
   let res = NextResponse.next({ request: req });
   const sb = createServerClient(url, anon, {
@@ -23,21 +40,9 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await sb.auth.getUser();
 
-  const p = req.nextUrl.pathname;
-  // Públicas: acceso, webs de los negocios, su pago y reservas, y el aviso firmado de Stripe
-  const open = ["/login", "/auth", "/s/", "/webs", "/legal", "/sitemap.xml", "/robots.txt", "/herramientas", "/guias", "/api/signup", "/api/checkout/", "/api/booking/", "/api/stripe/webhook"].some((x) =>
-    p.startsWith(x)
-  );
-  const allowed = process.env.ALLOWED_EMAIL;
-  const forbidden = user && allowed && user.email?.toLowerCase() !== allowed.toLowerCase();
-
-  if ((!user || forbidden) && !open) {
-    const to = req.nextUrl.clone();
-    // La portada pública es la página de alta; el resto de rutas privadas llevan al acceso
-    to.pathname = p === "/" ? "/webs" : "/login";
-    to.search = "";
-    return NextResponse.redirect(to);
-  }
+  const isOwner = user?.email?.toLowerCase() === allowed.toLowerCase();
+  // La portada pública es la página de alta; el resto de rutas privadas llevan al acceso
+  if (!isOwner && !open) return away(p === "/" ? "/webs" : "/login");
   return res;
 }
 
